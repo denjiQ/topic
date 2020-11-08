@@ -1,0 +1,13 @@
+type Topic @model @key(name: "ByParent", fields: ["parentID"]){
+  id: ID!
+  parentID: ID!
+  name: String!
+  parent: Topic @connection(fields: ["parentID"])
+  children: [Topic] @connection(keyName: "ByParent", fields: ["id"])
+  comments: [Comment] @connection(name: "TopicComments")
+}
+type Comment @model {
+  id: ID!
+  content: String
+  topic: Topic @connection(name: "TopicComments")
+}
