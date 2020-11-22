@@ -1,4 +1,5 @@
-// tslint:disable
+/* tslint:disable */
+/* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
 export const onCreateTopic = /* GraphQL */ `
@@ -11,6 +12,8 @@ export const onCreateTopic = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
       children {
         nextToken
@@ -18,6 +21,8 @@ export const onCreateTopic = /* GraphQL */ `
       comments {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -31,6 +36,8 @@ export const onUpdateTopic = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
       children {
         nextToken
@@ -38,6 +45,8 @@ export const onUpdateTopic = /* GraphQL */ `
       comments {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -51,6 +60,8 @@ export const onDeleteTopic = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
       children {
         nextToken
@@ -58,6 +69,8 @@ export const onDeleteTopic = /* GraphQL */ `
       comments {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -70,7 +83,11 @@ export const onCreateComment = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -83,7 +100,11 @@ export const onUpdateComment = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -96,7 +117,11 @@ export const onDeleteComment = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;

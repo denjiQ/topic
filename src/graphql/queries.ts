@@ -1,4 +1,5 @@
-// tslint:disable
+/* tslint:disable */
+/* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
 export const getTopic = /* GraphQL */ `
@@ -11,13 +12,21 @@ export const getTopic = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
       children {
         nextToken
       }
       comments {
+        items {
+          id
+          content
+        }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -32,6 +41,8 @@ export const listTopics = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
       nextToken
     }
@@ -46,7 +57,11 @@ export const getComment = /* GraphQL */ `
         id
         parentID
         name
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -60,6 +75,8 @@ export const listComments = /* GraphQL */ `
       items {
         id
         content
+        createdAt
+        updatedAt
       }
       nextToken
     }

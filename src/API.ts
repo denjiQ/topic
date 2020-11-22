@@ -138,6 +138,8 @@ export type CreateTopicMutation = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     children:  {
       __typename: "ModelTopicConnection",
@@ -147,6 +149,8 @@ export type CreateTopicMutation = {
       __typename: "ModelCommentConnection",
       nextToken: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -166,6 +170,8 @@ export type UpdateTopicMutation = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     children:  {
       __typename: "ModelTopicConnection",
@@ -175,6 +181,8 @@ export type UpdateTopicMutation = {
       __typename: "ModelCommentConnection",
       nextToken: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -194,6 +202,8 @@ export type DeleteTopicMutation = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     children:  {
       __typename: "ModelTopicConnection",
@@ -203,6 +213,8 @@ export type DeleteTopicMutation = {
       __typename: "ModelCommentConnection",
       nextToken: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -221,7 +233,11 @@ export type CreateCommentMutation = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -240,7 +256,11 @@ export type UpdateCommentMutation = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -259,7 +279,11 @@ export type DeleteCommentMutation = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -278,6 +302,8 @@ export type GetTopicQuery = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     children:  {
       __typename: "ModelTopicConnection",
@@ -287,6 +313,8 @@ export type GetTopicQuery = {
       __typename: "ModelCommentConnection",
       nextToken: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -304,6 +332,8 @@ export type ListTopicsQuery = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null > | null,
     nextToken: string | null,
   } | null,
@@ -323,7 +353,11 @@ export type GetCommentQuery = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -340,6 +374,8 @@ export type ListCommentsQuery = {
       __typename: "Comment",
       id: string,
       content: string | null,
+      createdAt: string,
+      updatedAt: string,
     } | null > | null,
     nextToken: string | null,
   } | null,
@@ -356,6 +392,8 @@ export type OnCreateTopicSubscription = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     children:  {
       __typename: "ModelTopicConnection",
@@ -365,6 +403,8 @@ export type OnCreateTopicSubscription = {
       __typename: "ModelCommentConnection",
       nextToken: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -379,6 +419,8 @@ export type OnUpdateTopicSubscription = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     children:  {
       __typename: "ModelTopicConnection",
@@ -388,6 +430,8 @@ export type OnUpdateTopicSubscription = {
       __typename: "ModelCommentConnection",
       nextToken: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -402,6 +446,8 @@ export type OnDeleteTopicSubscription = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     children:  {
       __typename: "ModelTopicConnection",
@@ -411,6 +457,8 @@ export type OnDeleteTopicSubscription = {
       __typename: "ModelCommentConnection",
       nextToken: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -424,7 +472,11 @@ export type OnCreateCommentSubscription = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -438,7 +490,11 @@ export type OnUpdateCommentSubscription = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -452,6 +508,10 @@ export type OnDeleteCommentSubscription = {
       id: string,
       parentID: string,
       name: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };

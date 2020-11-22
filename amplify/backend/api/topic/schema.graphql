@@ -1,4 +1,4 @@
-type Topic @model @key(name: "ByParent", fields: ["parentID"]){
+type Topic @model (subscriptions: { level: public }) @key(name: "ByParent", fields: ["parentID"]){
   id: ID!
   parentID: ID!
   name: String!
@@ -6,7 +6,7 @@ type Topic @model @key(name: "ByParent", fields: ["parentID"]){
   children: [Topic] @connection(keyName: "ByParent", fields: ["id"])
   comments: [Comment] @connection(name: "TopicComments")
 }
-type Comment @model {
+type Comment @model (subscriptions: { level: public }){
   id: ID!
   content: String
   topic: Topic @connection(name: "TopicComments")
