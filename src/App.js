@@ -2,6 +2,7 @@
 import './App.css';
 import React, { useEffect, useState } from "react";
 import { getTopic } from './graphql/queries'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import {
   Button,
@@ -15,6 +16,7 @@ import {
 import Header from './components/header'
 import Title from './components/title'
 import Comments from './components/comments'
+import CreateChildTopic from './components/create-child-topic'
 
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
@@ -24,6 +26,7 @@ function App() {
   const [topicId, setTopicId] = useState((new URL(window.location)).searchParams.get('id'));
   const [topicName, setTopicName] = useState()
   const [comments, setComments] = useState([])
+  const [parents, setParents] = useState([])
   console.log((new URL(window.location)).searchParams.get('id'))
   // idからtopicを取得
   const getTopicFunc = async (id) => {
@@ -34,27 +37,47 @@ function App() {
     // setNextToken(res.data.listPostsSortedByTimestamp.nextToken);
     // setIsLoading(false);
   }
+  const getParent = (topic)=>{
+    const obj = {
+      id: topic.id,
+      name: topic.name
+    }
+    if(!topic.parent){
+      return [obj]
+    }
+    return [obj, ...getParent(topic.parent)]
+  }
   useEffect(()=>{
     const fn = async ()=>{
       console.log(topicId)
       const res = await getTopicFunc(topicId)
       setTopicName(res.data.getTopic.name)
+      const parents = getParent(res.data.getTopic)
+      console.log(parents)
+      setParents(parents)
       console.log(res.data.getTopic.comments.items)
       setComments(res.data.getTopic.comments.items)
     }
     fn()
   }, [])
+  const loop = (topic)=>{
+
+  }
   // 
   return (
-    <div className="App">
-      <CssBaseline />
-      <Container maxWidth="sm">
-        <Header />
-        <Title topicName={topicName} />
-        <Comments topicId={topicId} comments={comments} setComments={setComments}/>
-      </Container>
-      <TextField id="standard-basic" label="TopicId" onChange={event => setTopicId(event.target.value)} />
-    </div>
+    <Router>
+      <Route path="/">
+        <div className="App">
+          <CssBaseline />
+          <Container maxWidth="sm">
+            <Header parents={parents}/>
+            <Title topicName={topicName} />
+            <Comments topicId={topicId} comments={comments} setComments={setComments}/>
+            <CreateChildTopic parentTopicId={topicId}/>
+          </Container>
+        </div>
+      </Route>
+    </Router>
   );
 }
 

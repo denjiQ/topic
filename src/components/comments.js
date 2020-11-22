@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import {
   Button,
   TextField,
+  Typography
 } from '@material-ui/core';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { createComment } from '../graphql/mutations'
 import { onCreateComment } from '../graphql/subscriptions'
+import Comment from './comment';
 
 function Comments({topicId, comments, setComments}) {
   const [comment, setComment] = useState('');
@@ -38,7 +40,7 @@ function Comments({topicId, comments, setComments}) {
   useEffect(()=>{
     console.log(comments)
     const commentsBlock = comments.map((comment) => 
-    <p key={comment.id}>{comment.content}</p>
+      <Comment key={comment.id} createdAt={comment.createdAt}>{comment.content}</Comment>
     )
     setCommentsBlock(commentsBlock)
   }, [comments])

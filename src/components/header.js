@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   TextField,
@@ -12,23 +12,23 @@ import {
 
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 
-function Header() {
-  const handleClick = (event) => {
-    event.preventDefault();
-    console.info('You clicked a breadcrumb.');
-  }
+function Header({parents}) {
+  const [linkBlock, setLinkBlock] = useState('')
+  useEffect(()=>{
+    const parentBlock = parents.reverse().map((parent)=>{
+      const url = `/?id=${parent.id}`
+      return (
+        <Link key={parent.id} color="inherit" href={url}>
+          {parent.name}
+        </Link>
+      )
+    })
+    console.log(parents)
+    setLinkBlock(parentBlock)
+  },[parents])
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link color="inherit" href="/" onClick={handleClick}>
-        Material-UI
-      </Link>
-      <Link color="inherit" href="/getting-started/installation/" onClick={handleClick}>
-        Core
-      </Link>
-      <Link color="inherit" href="/getting-started/installation/" onClick={handleClick}>
-        Core
-      </Link>
-      <Typography color="textPrimary">Breadcrumb</Typography>
+      {linkBlock}
     </Breadcrumbs>
   );
 }

@@ -12,16 +12,169 @@ export const getTopic = /* GraphQL */ `
         id
         parentID
         name
+        parent {
+          id
+          parentID
+          name
+          parent {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          children {
+            items {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          comments {
+            items {
+              id
+              content
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        children {
+          items {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        comments {
+          items {
+            id
+            content
+            topic {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
       children {
+        items {
+          id
+          parentID
+          name
+          parent {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          children {
+            items {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          comments {
+            items {
+              id
+              content
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       comments {
         items {
           id
           content
+          topic {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
         }
         nextToken
       }
@@ -41,6 +194,91 @@ export const listTopics = /* GraphQL */ `
         id
         parentID
         name
+        parent {
+          id
+          parentID
+          name
+          parent {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          children {
+            items {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          comments {
+            items {
+              id
+              content
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        children {
+          items {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        comments {
+          items {
+            id
+            content
+            topic {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -57,6 +295,91 @@ export const getComment = /* GraphQL */ `
         id
         parentID
         name
+        parent {
+          id
+          parentID
+          name
+          parent {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          children {
+            items {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          comments {
+            items {
+              id
+              content
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        children {
+          items {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        comments {
+          items {
+            id
+            content
+            topic {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -75,6 +398,52 @@ export const listComments = /* GraphQL */ `
       items {
         id
         content
+        topic {
+          id
+          parentID
+          name
+          parent {
+            id
+            parentID
+            name
+            parent {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            children {
+              nextToken
+            }
+            comments {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          children {
+            items {
+              id
+              parentID
+              name
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          comments {
+            items {
+              id
+              content
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
