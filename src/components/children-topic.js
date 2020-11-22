@@ -5,26 +5,39 @@ import {
   TextField,
   Typography,
   Card,
-  CardContent
+  CardContent,
+  Link
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { createComment } from '../graphql/mutations'
 import { onCreateComment } from '../graphql/subscriptions'
-import dayjs from 'dayjs'
 
-function CommentBox({ createdAt, children }) {
+function ChildrenTopic({ childrenTopic }) {
+  const [childrenTopicBlock, setChildrenTopicBlock] = useState([])
   const classes = useStyles();
+  useEffect(()=>{
+    console.log(childrenTopic)
+    const childrenTopicBlock = childrenTopic.map((child) => {
+      const url = `/?id=${child.id}`
+      return (
+        <Card key={child.id} className={classes.root}>
+          <CardContent>
+            <Link className={classes.title} href={url}>
+              {child.name}  
+            </Link>
+          </CardContent>
+        </Card>
+      )
+    })
+    setChildrenTopicBlock(childrenTopicBlock)
+  }, [childrenTopic])
   return (
-    <Card className={classes.root}>
+    <Card>
       <CardContent>
-        <Typography className={classes.title}>
-          {children}  
-        </Typography>
-        <Typography color="textSecondary" className={classes.pos}>
-          {dayjs(createdAt).format('YYYY-MM-DD HH:mm:ss')}
-        </Typography>
+        このトピックの子供のトピック
+        {childrenTopicBlock}
       </CardContent>
     </Card>
   );
@@ -50,4 +63,4 @@ const useStyles = makeStyles({
   },
 });
 
-export default CommentBox;
+export default ChildrenTopic;

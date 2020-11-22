@@ -17,6 +17,7 @@ import Header from './components/header'
 import Title from './components/title'
 import Comments from './components/comments'
 import CreateChildTopic from './components/create-child-topic'
+import ChildrenTopic from './components/children-topic'
 
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
@@ -27,6 +28,7 @@ function App() {
   const [topicName, setTopicName] = useState()
   const [comments, setComments] = useState([])
   const [parents, setParents] = useState([])
+  const [childrenTopic, setChildrenTopic] = useState([])
   console.log((new URL(window.location)).searchParams.get('id'))
   // idからtopicを取得
   const getTopicFunc = async (id) => {
@@ -55,6 +57,7 @@ function App() {
       const parents = getParent(res.data.getTopic)
       console.log(parents)
       setParents(parents)
+      setChildrenTopic(res.data.getTopic.children.items)
       console.log(res.data.getTopic.comments.items)
       setComments(res.data.getTopic.comments.items)
     }
@@ -73,6 +76,7 @@ function App() {
             <Header parents={parents}/>
             <Title topicName={topicName} />
             <Comments topicId={topicId} comments={comments} setComments={setComments}/>
+            <ChildrenTopic childrenTopic={childrenTopic} />
             <CreateChildTopic parentTopicId={topicId}/>
           </Container>
         </div>

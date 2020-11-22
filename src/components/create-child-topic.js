@@ -13,12 +13,15 @@ import {
   Container,
   Typography,
   CssBaseline,
+  Card,
+  CardContent
 } from '@material-ui/core';
-
+import { makeStyles } from '@material-ui/core/styles';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 
 function CreateChildTopic({parentTopicId}) {
   // console.log(props)
+  const classes = useStyles();
   const [newTopicName, setNewTopicName] = useState('');
   const history = useHistory();
   const postTopic = async (input) => {
@@ -53,15 +56,17 @@ function CreateChildTopic({parentTopicId}) {
   // }
 
   return (
-    <div>
-      <Typography color="textPrimary">子供のトピックを作成</Typography>
-      <form>
-        <TextField id="standard-basic" label="New Topic" onChange={event => setNewTopicName(event.target.value)}/>
-        <Button variant="contained" fullWidth color="primary" onClick={submit}>
-          Submit
-        </Button>
-      </form>
-    </div>
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography color="textPrimary">新しく子供のトピックを作成する</Typography>
+        <form>
+          <TextField variant="outlined" fullWidth className={classes.textField} id="standard-basic" label="New Topic" onChange={event => setNewTopicName(event.target.value)}/>
+          <Button variant="contained" fullWidth color="primary" onClick={submit}>
+            Submit
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
   // return (
   //   <div>
@@ -71,5 +76,25 @@ function CreateChildTopic({parentTopicId}) {
   //   </div>
   // );
 }
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+    marginTop: 20
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+    textAlign: 'left'
+  },
+  textField: {
+    margin: 5,
+  },
+});
+
 
 export default CreateChildTopic;

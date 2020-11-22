@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
+  CardContent,
   TextField,
+  Card,
   Typography
 } from '@material-ui/core';
-
+import { makeStyles } from '@material-ui/core/styles';
 import { API, graphqlOperation } from 'aws-amplify';
 import { createComment } from '../graphql/mutations'
 import { onCreateComment } from '../graphql/subscriptions'
@@ -15,7 +17,7 @@ function Comments({topicId, comments, setComments}) {
   const [comment, setComment] = useState('');
   const [commentsBlock, setCommentsBlock] = useState('')
   const [newComment, setNewComment] = useState('')
-
+  const classes = useStyles();
   const postComment = async (input) => {
     const res = await API.graphql(graphqlOperation(createComment, input));
     console.log(res);
@@ -59,15 +61,40 @@ function Comments({topicId, comments, setComments}) {
 
   return (
     <div>
-      {commentsBlock}
-      <form>
-        <TextField id="standard-basic" label="Comment" onChange={event => setComment(event.target.value)}/>
-        <Button variant="contained" color="primary" onClick={submit}>
-          Submit
-        </Button>
-      </form>
+      <Card>
+        <CardContent>
+          Comments
+          {commentsBlock}
+          <form>
+            <TextField fullWidth variant="outlined" className={classes.textField} id="standard-basic" label="Comment" onChange={event => setComment(event.target.value)}/>
+            <Button fullWidth variant="contained" color="primary" onClick={submit}>
+              Submit
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 }
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+    marginTop: 20
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+    textAlign: 'left'
+  },
+  textField: {
+    margin: 5,
+  },
+});
+
 
 export default Comments;
