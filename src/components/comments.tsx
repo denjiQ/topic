@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Button, CardContent, TextField, Card } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { API, graphqlOperation } from "aws-amplify";
-import { createComment } from "../graphql/mutations";
-import { onCreateComment } from "../graphql/subscriptions";
-import Comment from "./comment";
+import { createComment } from "graphql/mutations";
+import { onCreateComment } from "graphql/subscriptions";
+import Comment from "components/comment";
 
 function Comments({
   topicId,

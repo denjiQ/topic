@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { createTopic } from "../graphql/mutations";
+import { createTopic } from "graphql/mutations";
 import {
   Button,
   TextField,

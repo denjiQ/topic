@@ -3255,7 +3255,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*":
+"@types/jest@*", "@types/jest@^26.0.15":
   version "26.0.15"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.15.tgz#12e02c0372ad0548e07b9f4e19132b834cb1effe"
   integrity sha512-s2VMReFXRg9XXxV+CW9e5Nz8fH2K1aEhwgjUqPPbQd7g95T0laAcvLv032EhFHIa5GHsZ8W7iJEQVaJq6k3Gog==
@@ -3288,6 +3288,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.9.2.tgz#ace1880c03594cc3e80206d96847157d8e7fa349"
   integrity sha512-bnoqK579sAYrQbp73wwglccjJ4sfRdKU7WNEZ5FW4K2U6Kc0/eZ5kvXG0JKsEKFB50zrFmfFt52/cvBbZa7eXg==
 
+"@types/node@^12.0.0":
+  version "12.19.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.19.6.tgz#fbf249fa46487dd8c7386d785231368b92a33a53"
+  integrity sha512-U2VopDdmBoYBmtm8Rz340mvvSz34VgX/K9+XCuckvcLGMkt3rbMX8soqFOikIPlPBc5lmw8By9NUK7bEFSBFlQ==
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -3312,6 +3317,13 @@
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
+
+"@types/react-dom@^16.9.8":
+  version "16.9.10"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.10.tgz#4485b0bec3d41f856181b717f45fd7831101156f"
+  integrity sha512-ItatOrnXDMAYpv6G8UCk2VhbYVTjZT9aorLtA/OzDN9XJ2GKcfam68jutoAcILdRjsRUO8qb7AmyObF77Q8QFw==
+  dependencies:
+    "@types/react" "^16"
 
 "@types/react-router-dom@^5.1.6":
   version "5.1.6"
@@ -3344,6 +3356,13 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
+
+"@types/react@^16", "@types/react@^16.9.53":
+  version "16.14.1"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.1.tgz#da2ecb638385614a5573e16e4aa7daf936dbead5"
+  integrity sha512-32mxrbX62m5b+lMTSzucFKNIr8Eq4T6T3rDVxYzKqyRwyfnPcwZppWW0YXUlPNPUE+r6phBtHXYRgr8ad/Zl9A==
+  dependencies:
+    "@types/prop-types" "*"
 
 "@types/resolve@0.0.8":
   version "0.0.8"

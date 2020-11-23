@@ -4,14 +4,14 @@ import { getTopic } from "./graphql/queries";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Container, CssBaseline } from "@material-ui/core";
-import Header from "./components/header";
-import Title from "./components/title";
-import Comments from "./components/comments";
-import CreateChildTopic from "./components/create-child-topic";
-import ChildrenTopic from "./components/children-topic";
+import Header from "components/header";
+import Title from "components/title";
+import Comments from "components/comments";
+import CreateChildTopic from "components/create-child-topic";
+import ChildrenTopic from "components/children-topic";
 
 import Amplify, { API, graphqlOperation } from "aws-amplify";
-import awsconfig from "./aws-exports";
+import awsconfig from "aws-exports";
 Amplify.configure(awsconfig);
 
 function App() {
