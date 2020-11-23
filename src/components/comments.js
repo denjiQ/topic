@@ -41,6 +41,7 @@ function Comments({topicId, comments, setComments}) {
   
   useEffect(()=>{
     console.log(comments)
+    // TODO: devide pages at next token
     const commentsBlock = comments.map((comment) => 
       <Comment key={comment.id} createdAt={comment.createdAt}>{comment.content}</Comment>
     )
