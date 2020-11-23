@@ -1,25 +1,18 @@
 
 import React, { useEffect, useState } from "react";
 import {
-  Button,
-  TextField,
-  Typography,
   Card,
   CardContent,
   Link
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { API, graphqlOperation } from 'aws-amplify';
-import { createComment } from '../graphql/mutations'
-import { onCreateComment } from '../graphql/subscriptions'
-
-function ChildrenTopic({ childrenTopic }) {
+function ChildrenTopic({ childrenTopic }: {childrenTopic: any}) {
   const [childrenTopicBlock, setChildrenTopicBlock] = useState([])
   const classes = useStyles();
   useEffect(()=>{
     console.log(childrenTopic)
-    const childrenTopicBlock = childrenTopic.map((child) => {
+    const childrenTopicBlock = childrenTopic.map((child:any) => {
       const url = `/?id=${child.id}`
       return (
         <Card key={child.id} className={classes.root}>
@@ -32,6 +25,7 @@ function ChildrenTopic({ childrenTopic }) {
       )
     })
     setChildrenTopicBlock(childrenTopicBlock)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [childrenTopic])
   return (
     <Card>

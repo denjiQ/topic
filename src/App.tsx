@@ -5,12 +5,7 @@ import { getTopic } from './graphql/queries'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import {
-  Button,
-  TextField,
-  Link,
-  Breadcrumbs,
   Container,
-  Typography,
   CssBaseline,
 } from '@material-ui/core';
 import Header from './components/header'
@@ -24,14 +19,14 @@ import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 
 function App() {
-  const [topicId, setTopicId] = useState((new URL(window.location)).searchParams.get('id'));
+  const topicId = (new URL(window.location.href)).searchParams.get('id');
   const [topicName, setTopicName] = useState()
   const [comments, setComments] = useState([])
   const [parents, setParents] = useState([])
   const [childrenTopic, setChildrenTopic] = useState([])
-  console.log((new URL(window.location)).searchParams.get('id'))
+  console.log((new URL(window.location.href)).searchParams.get('id'))
   // idからtopicを取得
-  const getTopicFunc = async (id) => {
+  const getTopicFunc = async (id: string|null): Promise<any> => {
     const res = await API.graphql(graphqlOperation(getTopic, {id}));
     console.log(res);
     return res
@@ -39,7 +34,7 @@ function App() {
     // setNextToken(res.data.listPostsSortedByTimestamp.nextToken);
     // setIsLoading(false);
   }
-  const getParent = (topic)=>{
+  const getParent = (topic: any): any=>{
     const obj = {
       id: topic.id,
       name: topic.name
@@ -62,11 +57,9 @@ function App() {
       setComments(res.data.getTopic.comments.items)
     }
     fn()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  const loop = (topic)=>{
-
-  }
-  // 
+  
   return (
     <Router>
       <Route path="/">

@@ -1,16 +1,9 @@
 
 import React, { useEffect, useState } from "react";
 import {
-  Button,
-  TextField,
   Link,
   Breadcrumbs,
-  Container,
-  Typography,
-  CssBaseline,
 } from '@material-ui/core';
-
-import Amplify, { API, graphqlOperation } from 'aws-amplify';
 
 function Header({parents}) {
   const [linkBlock, setLinkBlock] = useState('')

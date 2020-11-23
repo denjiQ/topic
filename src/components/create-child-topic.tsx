@@ -4,20 +4,15 @@ import {
   useHistory,
 } from 'react-router-dom';
 import { createTopic } from '../graphql/mutations'
-import { getTopic } from '../graphql/queries'
 import {
   Button,
   TextField,
-  Link,
-  Breadcrumbs,
-  Container,
   Typography,
-  CssBaseline,
   Card,
   CardContent
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation } from 'aws-amplify';
 
 function CreateChildTopic({parentTopicId}) {
   // console.log(props)
@@ -49,11 +44,6 @@ function CreateChildTopic({parentTopicId}) {
     })
     window.location.reload()
   }
-  
-  // const getTopicFunc = async (id) => {
-  //   const res = await API.graphql(graphqlOperation(getTopic, id));
-  //   console.log(res)
-  // }
 
   return (
     <Card className={classes.root}>
@@ -68,13 +58,6 @@ function CreateChildTopic({parentTopicId}) {
       </CardContent>
     </Card>
   );
-  // return (
-  //   <div>
-  //     <div>
-  //       <Typography variant="h4">{props.topicName}</Typography>
-  //     </div>
-  //   </div>
-  // );
 }
 
 const useStyles = makeStyles({

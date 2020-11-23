@@ -1,20 +1,15 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
-  Button,
-  TextField,
   Typography,
   Card,
   CardContent
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { API, graphqlOperation } from 'aws-amplify';
-import { createComment } from '../graphql/mutations'
-import { onCreateComment } from '../graphql/subscriptions'
 import dayjs from 'dayjs'
 
-function CommentBox({ createdAt, children }) {
+function CommentBox({ createdAt, children }: {createdAt: any, children:any}) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>

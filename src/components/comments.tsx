@@ -4,8 +4,7 @@ import {
   Button,
   CardContent,
   TextField,
-  Card,
-  Typography
+  Card
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { API, graphqlOperation } from 'aws-amplify';
@@ -13,12 +12,12 @@ import { createComment } from '../graphql/mutations'
 import { onCreateComment } from '../graphql/subscriptions'
 import Comment from './comment';
 
-function Comments({topicId, comments, setComments}) {
+function Comments({topicId, comments, setComments}: {topicId: string|null, comments: any, setComments: any}) {
   const [comment, setComment] = useState('');
   const [commentsBlock, setCommentsBlock] = useState('')
   const [newComment, setNewComment] = useState('')
   const classes = useStyles();
-  const postComment = async (input) => {
+  const postComment = async (input: any) => {
     const res = await API.graphql(graphqlOperation(createComment, input));
     console.log(res);
   }
@@ -36,13 +35,14 @@ function Comments({topicId, comments, setComments}) {
   
   useEffect(()=>{
     console.log(comments)
-    setComments([...comments, ...newComment])
+    setComments([...comments, newComment])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newComment])
   
   useEffect(()=>{
     console.log(comments)
     // TODO: devide pages at next token
-    const commentsBlock = comments.map((comment) => 
+    const commentsBlock = comments.map((comment:any) => 
       <Comment key={comment.id} createdAt={comment.createdAt}>{comment.content}</Comment>
     )
     setCommentsBlock(commentsBlock)
@@ -52,12 +52,13 @@ function Comments({topicId, comments, setComments}) {
     const subscription = API.graphql(graphqlOperation(onCreateComment)).subscribe({
       next: (eventData) => {
         console.log(eventData)
-        const comment = [eventData.value.data.onCreateComment];
+        const comment = eventData.value.data.onCreateComment;
         console.log(comments)
         setNewComment(comment)
       }
     });
     return () => subscription.unsubscribe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
