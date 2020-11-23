@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 
-function Title({ topicName }) {
+function Title({ topicName }: {topicName:string}) {
   return (
     <div>
       <div>

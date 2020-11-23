@@ -16,7 +16,7 @@ Amplify.configure(awsconfig);
 
 function App() {
   const topicId = new URL(window.location.href).searchParams.get("id");
-  const [topicName, setTopicName] = useState();
+  const [topicName, setTopicName] = useState('');
   const [comments, setComments] = useState([]);
   const [parents, setParents] = useState([]);
   const [childrenTopic, setChildrenTopic] = useState([]);

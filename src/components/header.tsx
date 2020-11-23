@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, Breadcrumbs } from "@material-ui/core";
 
-function Header({ parents }) {
+function Header({ parents }:{ parents:any }) {
   const [linkBlock, setLinkBlock] = useState("");
   useEffect(() => {
-    const parentBlock = parents.reverse().map((parent) => {
+    const parentBlock = parents.reverse().map((parent: any) => {
       const url = `/?id=${parent.id}`;
       return (
         <Link key={parent.id} color="inherit" href={url}>

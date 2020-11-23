@@ -11,13 +11,13 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { API, graphqlOperation } from "aws-amplify";
 
-function CreateChildTopic({ parentTopicId }) {
+function CreateChildTopic({ parentTopicId }: {parentTopicId: string|null}) {
   // console.log(props)
   const classes = useStyles();
   const [newTopicName, setNewTopicName] = useState("");
   const history = useHistory();
-  const postTopic = async (input) => {
-    const res = await API.graphql(graphqlOperation(createTopic, input));
+  const postTopic = async (input: any) => {
+    const res:any = await API.graphql(graphqlOperation(createTopic, input));
     console.log(res.data.createTopic);
     return res;
     // dispatch({ type: type, posts: res.data.listPostsSortedByTimestamp.items })

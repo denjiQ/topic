@@ -53,10 +53,10 @@ function Comments({
   }, [comments]);
 
   useEffect(() => {
-    const subscription = API.graphql(
+    const subscription = (API.graphql(
       graphqlOperation(onCreateComment)
-    ).subscribe({
-      next: (eventData) => {
+    ) as any).subscribe({
+      next: (eventData: any) => {
         console.log(eventData);
         const comment = eventData.value.data.onCreateComment;
         console.log(comments);
